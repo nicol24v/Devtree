@@ -93,7 +93,7 @@ La aplicación permite:
 
 # Instalación y Ejecución
 
-## Clonar el repositorio
+## Abre el cmd git y Clonar el repositorio
 
 ```bash
 git clone https://github.com/nicol24v/Devtree.git
