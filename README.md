@@ -109,61 +109,6 @@ git clone https://github.com/nicol24v/Devtree.git
 cd DevTree
 ```
 
-## Instalar dependencias
-
-```bash
-npm install
-```
-
-## Ejecutar en desarrollo
-
-```bash
-npm run dev
-```
-
----
-
-# Frontend
-
-## Entrar al frontend
-
-```bash
-cd frontend
-```
-
-## Instalar dependencias
-
-```bash
-npm install
-```
-
-## Ejecutar en desarrollo
-
-```bash
-npm run dev
-```
-
----
-
-# Build de Producción
-
-## Frontend
-
-```bash
-cd frontend
-npm run build
-```
-
-## Backend
-
-```bash
-cd DevTree
-npm run build
-npm start
-```
-
----
-
 # Variables de Entorno
 
 Crear un archivo `.env` en el backend con variables similares a:
