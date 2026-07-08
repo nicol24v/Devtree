@@ -8,7 +8,18 @@ export interface IUser extends Document {
     description: string
     image: string
     links: string
+    theme: string
 }
+
+const DEFAULT_THEME = JSON.stringify({
+    backgroundType: 'gradient',
+    backgroundColor: '#0f172a',
+    gradientFrom: '#581c87',
+    gradientTo: '#1e3a8a',
+    backgroundImage: '',
+    font: 'sans',
+    buttonStyle: 'shadow'
+})
 
 const userSchema = new Schema({
     handle: {
@@ -46,6 +57,10 @@ const userSchema = new Schema({
     links: {
         type: String,
         default: '[]'
+    },
+    theme: {
+        type: String,
+        default: DEFAULT_THEME
     }
 })
 
