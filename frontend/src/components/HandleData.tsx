@@ -9,27 +9,42 @@ export default function HandleData({ data }: HandleDataProps) {
 
     return (
         <div className="space-y-6 text-white">
-            <p className="text-5xl text-center font-black">{data.handle}</p>
-            {data.image && <img src={data.image} className="max-w-[250px] mx-auto" />}
+            <p className="text-5xl text-center font-black bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">
+                @{data.handle}
+            </p>
 
-            <p className="text-lg text-center font-bold">{data.description}</p>
-            <div className="mt-20 flex flex-col gap-6">
-                {links.length ?  
+            {data.image && (
+                <div className="flex justify-center">
+                    <img
+                        src={data.image}
+                        className="w-[200px] h-[200px] rounded-full object-cover ring-4 ring-purple-400/60 ring-offset-4 ring-offset-slate-950 shadow-lg shadow-purple-900/60"
+                        alt="Imagen de perfil"
+                    />
+                </div>
+            )}
+
+            <p className="text-lg text-center text-purple-200 font-medium">{data.description}</p>
+
+            <div className="border-t border-purple-500/30 my-2" />
+
+            <div className="flex flex-col gap-4">
+                {links.length ?
                     links.map(link => (
                         <a
                             key={link.name}
-                            className="bg-white px-5 py-2 flex items-center gap-5 rounded-lg"
+                            className="bg-gradient-to-r from-purple-900/80 to-blue-900/80 border border-purple-500/40 px-5 py-3 flex items-center gap-4 rounded-2xl shadow-lg shadow-purple-900/40 hover:border-purple-400/70 hover:shadow-purple-700/50 transition-all duration-200 group"
                             href={link.url}
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            <img src={`/social/icon_${link.name}.svg`} alt="imagen red social" className="w-12" />
-                            <p className="text-black capitalize font-bold text-lg">Visita mi: {link.name}</p>
+                            <img src={`/social/icon_${link.name}.svg`} alt="imagen red social" className="w-10 flex-shrink-0" />
+                            <p className="text-white capitalize font-bold text-lg group-hover:text-purple-200 transition-colors">
+                                Visita mi: {link.name}
+                            </p>
                         </a>
                     ))
-                : <p className="text-center">No hay enlaces en este perfil</p>}
+                : <p className="text-center text-purple-300">No hay enlaces en este perfil</p>}
             </div>
-
         </div>
     )
 }

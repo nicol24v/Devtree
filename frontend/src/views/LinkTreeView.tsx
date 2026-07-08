@@ -121,7 +121,7 @@ export default function LinkTreeView() {
                 />
             ))}
             <button
-                className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 p-3 text-lg w-full uppercase text-white rounded-xl font-bold shadow-lg shadow-purple-900/40 tracking-widest"
                 onClick={() => mutate(queryClient.getQueryData(['user'])!)}
             >Guardar Cambios</button>
         </div>

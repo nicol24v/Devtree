@@ -27,18 +27,18 @@ services:
       MONGO_URI: ${MONGO_URI:-mongodb://admin:secret@mongo:27017/devtree?authSource=admin}
       JWT_SECRET: ${JWT_SECRET:-changeme_supersecret}
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
-      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_NAME: ${CLOUDINARY_NAME}
       CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
     ports:
-      - "${PORT:-4000}:4000"
+      - "${PORT:-4001}:4000"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_API_URL: ${VITE_API_URL:-http://localhost:4000}
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:4001}
     container_name: devtree_frontend
     restart: unless-stopped
     depends_on:

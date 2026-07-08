@@ -55,50 +55,52 @@ export default function ProfileView() {
 
     return (
         <form
-            className="bg-white p-10 rounded-lg space-y-5"
+            className="bg-gradient-to-r from-purple-900 to-blue-900 border border-purple-500/40 shadow-lg shadow-purple-900/40 rounded-2xl p-10 space-y-5"
             onSubmit={handleSubmit(handleUserProfileForm)}
         >
-            <legend className="text-2xl text-slate-800 text-center">Editar Información</legend>
+            <legend className="text-2xl text-white text-center font-bold tracking-wide">Editar Información</legend>
+
             <div className="grid grid-cols-1 gap-2">
                 <label
                     htmlFor="handle"
+                    className="text-purple-200 text-sm font-medium"
                 >Handle:</label>
                 <input
                     type="text"
-                    className="border-none bg-slate-100 rounded-lg p-2"
+                    className="bg-white/10 border border-purple-400/30 text-white placeholder-purple-300/50 rounded-lg px-3 py-2 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-colors"
                     placeholder="handle o Nombre de Usuario"
                     {...register('handle', {
                         required: "El Nombre de Usuario es obligatorio"
                     })}
                 />
-
                 {errors.handle && <ErrorMessage>{errors.handle.message}</ErrorMessage>}
             </div>
 
             <div className="grid grid-cols-1 gap-2">
                 <label
                     htmlFor="description"
+                    className="text-purple-200 text-sm font-medium"
                 >Descripción:</label>
                 <textarea
-                    className="border-none bg-slate-100 rounded-lg p-2"
+                    className="bg-white/10 border border-purple-400/30 text-white placeholder-purple-300/50 rounded-lg px-3 py-2 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-colors resize-none"
                     placeholder="Tu Descripción"
                     {...register('description', {
                         required: "La Descripción es obligatoria"
                     })}
                 />
-
                 {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
             </div>
 
             <div className="grid grid-cols-1 gap-2">
                 <label
                     htmlFor="image"
+                    className="text-purple-200 text-sm font-medium"
                 >Imagen:</label>
                 <input
                     id="image"
                     type="file"
                     name="image"
-                    className="border-none bg-slate-100 rounded-lg p-2"
+                    className="bg-white/10 border border-purple-400/30 text-purple-200 rounded-lg px-3 py-2 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:text-sm file:cursor-pointer hover:file:bg-purple-500 transition-colors cursor-pointer"
                     accept="image/*"
                     onChange={handleChange}
                 />
@@ -106,7 +108,7 @@ export default function ProfileView() {
 
             <input
                 type="submit"
-                className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 p-3 text-lg w-full uppercase text-white rounded-xl font-bold shadow-lg shadow-purple-900/40 tracking-widest cursor-pointer"
                 value='Guardar Cambios'
             />
         </form>
