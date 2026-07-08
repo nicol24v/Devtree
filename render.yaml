@@ -32,7 +32,7 @@ services:
     autoDeploy: false # el deploy lo dispara el workflow de GitHub Actions tras un build exitoso
     envVars:
       - key: VITE_API_URL
-        value: https://devtree-backend.onrender.com
+        value: https://devtree-backend-myhe.onrender.com
     routes:
       - type: rewrite
         source: /*
