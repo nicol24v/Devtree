@@ -12,7 +12,7 @@ export const createAccount = async (req: Request, res: Response) => {
     const { email, password } = req.body
     const userExists = await User.findOne({ email })
     if (userExists) {
-        const error = new Error('Email ya registrado, por favor utiliza otro email, este ya pertenece a otro usuario')
+        const error = new Error('Email ya registrado, por favor utiliza otro email')
         return res.status(409).json({ error: error.message })
     }
 
@@ -33,7 +33,7 @@ export const createAccount = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
 
-    // Manejar errores
+    //
     let errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
@@ -56,6 +56,8 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = generateJWT({ id: user._id })
+
+    console.log(`[LOGIN] Usuario autenticado: ${user.email} | ID: ${user._id} | ${new Date().toISOString()}`)
 
     res.send(token)
 }

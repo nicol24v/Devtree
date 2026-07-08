@@ -15,6 +15,7 @@ app.use(cors(corsConfig))
 // Leer datos de formularios
 app.use(express.json())
 
+app.get('/', (_, res) => res.json({ status: 'ok' }))
 app.use('/', router)
 
 export default app
