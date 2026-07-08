@@ -6,7 +6,7 @@ services:
     dockerfilePath: ./DevTree/Dockerfile
     dockerContext: ./DevTree
     plan: free
-    autoDeploy: true
+    autoDeploy: false # el deploy lo dispara el workflow de GitHub Actions tras un build exitoso
     envVars:
       - key: PORT
         value: 4000
@@ -29,7 +29,7 @@ services:
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
-    autoDeploy: true
+    autoDeploy: false # el deploy lo dispara el workflow de GitHub Actions tras un build exitoso
     envVars:
       - key: VITE_API_URL
         value: https://devtree-backend.onrender.com

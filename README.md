@@ -165,7 +165,10 @@ Pasos para desplegar:
 3. Completa las variables marcadas como manuales en el dashboard de cada servicio:
    - Backend: `MONGO_URI`, `JWT_SECRET`, `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
    - Ambos servicios ya traen `FRONTEND_URL` y `VITE_API_URL` con la URL esperada (`https://devtree-frontend.onrender.com` / `https://devtree-backend.onrender.com`). Si Render asigna un nombre distinto (por colisión de subdominio), actualiza ambas variables para que coincidan con las URLs reales y vuelve a desplegar.
-4. Cada push a `main` dispara un nuevo build y deploy automático en ambos servicios (sin pasos manuales).
+4. El auto-deploy nativo de Render está desactivado a propósito (`autoDeploy: false`). El deploy real lo dispara el workflow de GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) **solo si el build de backend y frontend pasan**, así el pipeline queda: push → CI compila → si todo pasa, CD despliega. Para activarlo:
+   - En el dashboard de cada servicio de Render, ve a **Settings > Deploy Hook** y copia la URL.
+   - En GitHub, ve a **Settings > Secrets and variables > Actions** de este repositorio y crea dos secrets: `RENDER_DEPLOY_HOOK_BACKEND` y `RENDER_DEPLOY_HOOK_FRONTEND`, con esas URLs.
+5. Cada push a `main` dispara el pipeline completo (CI + CD) automáticamente, sin pasos manuales.
 
 Nota: el plan gratuito de Render "duerme" el backend tras un período de inactividad; la primera petición después de eso puede tardar unos segundos en responder.
 
