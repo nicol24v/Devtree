@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: devtree_mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-secret}
+      MONGO_INITDB_DATABASE: devtree
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  backend:
+    build:
+      context: ./DevTree
+      dockerfile: Dockerfile
+    container_name: devtree_backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      PORT: ${PORT:-4000}
+      MONGO_URI: ${MONGO_URI:-mongodb://admin:secret@mongo:27017/devtree?authSource=admin}
+      JWT_SECRET: ${JWT_SECRET:-changeme_supersecret}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      CLOUDINARY_NAME: ${CLOUDINARY_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+    ports:
+      - "${PORT:-4001}:4000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:4001}
+    container_name: devtree_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mongo_data:

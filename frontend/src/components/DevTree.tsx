@@ -48,13 +48,13 @@ export default function DevTree({ data }: DevTreeProps) {
         <>
             <Header />
             
-            <div className="bg-gray-100  min-h-screen py-10">
+            <div className="bg-slate-900 min-h-screen py-10">
                 <main className="mx-auto max-w-5xl p-10 md:p-0">
                     <NavigationTabs />
 
                     <div className="flex justify-end">
                         <Link
-                            className="font-bold text-right text-slate-800 text-2xl"
+                            className="font-bold text-right text-purple-300 hover:text-white transition-colors text-2xl"
                             to={`/${data.handle}`}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -62,10 +62,10 @@ export default function DevTree({ data }: DevTreeProps) {
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-10 mt-10">
-                        <div className="flex-1 ">
+                        <div className="flex-1">
                             <Outlet />
                         </div>
-                        <div className="w-full md:w-96 bg-purple-300 px-5 py-10 space-y-6">
+                        <div className="w-full md:w-96 bg-gradient-to-b from-purple-900 to-blue-900 border border-purple-500/40 shadow-lg shadow-purple-900/40 rounded-2xl px-5 py-10 space-y-6">
                             {/* <p className='text-4xl text-center text-white'>{data.handle}</p> */}
                             <p 
                                 className='text-4xl text-center font-bold bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent tracking-wide'
