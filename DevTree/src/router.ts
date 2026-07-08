@@ -50,9 +50,3 @@ router.post('/search',
 
 export default router;
 
-
-
-
-
-//root
-//sdJpVu6TlmSAaSUd
