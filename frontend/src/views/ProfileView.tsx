@@ -109,7 +109,7 @@ export default function ProfileView() {
             <input
                 type="submit"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 p-3 text-lg w-full uppercase text-white rounded-xl font-bold shadow-lg shadow-purple-900/40 tracking-widest cursor-pointer"
-                value='Guardar Cambios'
+                value='Guardar tus cambios'
             />
         </form>
     )
