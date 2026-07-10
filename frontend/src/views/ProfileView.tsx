@@ -94,7 +94,7 @@ export default function ProfileView() {
             <div className="grid grid-cols-1 gap-2">
                 <label
                     htmlFor="image"
-                    className="text-purple-200 text-sm font-medium"
+                    className="text-purple-800 text-sm font-medium"
                 >Imagen:</label>
                 <input
                     id="image"
